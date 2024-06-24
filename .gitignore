@@ -2,7 +2,14 @@
 *.*
 !*/
 !.gitignore
+
+# Assignment 1
 !data_utils.py
 !get_datasets.sh
+## KNN
 !knn.ipynb
 !k_nearest_neighbor.py
+## SVM
+!svm.ipynb
+!linear_svm.py
+!gradient_check.py
