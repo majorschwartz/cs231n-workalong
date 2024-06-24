@@ -1,0 +1,8 @@
+*
+*.*
+!*/
+!.gitignore
+!data_utils.py
+!get_datasets.sh
+!knn.ipynb
+!k_nearest_neighbor.py
