@@ -13,3 +13,5 @@
 !svm.ipynb
 !linear_svm.py
 !gradient_check.py
+### Stocastic Gradient Descent
+!linear_classifier.py

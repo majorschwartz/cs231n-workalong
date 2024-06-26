@@ -144,14 +144,21 @@ def svm_loss_vectorized(W, X, y, reg, debug_loss=False, debug_grad=False):
 
     binary = margins # Create a binary matrix where the margins are greater than 0
     binary[margins > 0] = 1 # Set the binary matrix to 1 where the margins are greater than 0
+
+    if debug_grad:
+        print(f'\nPRE ROW-SUM: {binary[:2, :]=}\n{binary.shape=}\n')
+
     row_sum = np.sum(binary, axis=1) # Sum the rows of the binary matrix
     binary[np.arange(num_train), y] = -row_sum # Subtract the sum of the rows from the correct classes
+
+    if debug_grad:
+        print(f'\n{row_sum[:10]=}\n{row_sum.shape=}\n')
+        print(f'\nPOST ROW-SUM: {binary[:2, :]=}\n{binary.shape=}\n')
+
     dW = X.T.dot(binary) / num_train # Multiply the training examples by the binary matrix and divide by the number of training examples
     dW += 2 * reg * W # Add regularization to the gradient
 
     if debug_grad:
-        print(f'\n{binary[:2, :]=}\n{binary.shape=}\n')
-        print(f'\n{row_sum[:10]=}\n{row_sum.shape=}\n')
         print(f'\n{dW[:2, :]=}\n{dW.shape=}\n')
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
